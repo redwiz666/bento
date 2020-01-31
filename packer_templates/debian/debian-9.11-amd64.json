@@ -80,9 +80,18 @@
       "vm_name": "{{ user `template` }}",
       "memory": "{{ user `memory` }}",
       "cpus": "{{ user `cpus` }}",
+
+      "remote_type": "esx5",
+      "remote_host": "{{ user `esxi_host` }}",
+      "remote_username": "{{ user `esxi_username` }}",
+      "remote_password": "{{ user `esxi_password` }}",
+      "format": "vmx",
+
+      "vnc_disable_password": true,
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
-        "ethernet0.pciSlotNumber": "32"
+        "ethernet0.pciSlotNumber": "32",
+        "ethernet0.networkName": "VM Network"
       },
       "vmx_remove_ethernet_interfaces": true
     },
@@ -180,7 +189,9 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
       "scripts": [
+        "{{template_dir}}/../_common/fstab.sh",
         "{{template_dir}}/scripts/update.sh",
+        "{{template_dir}}/scripts/puppet.sh",
         "{{template_dir}}/../_common/motd.sh",
         "{{template_dir}}/../_common/sshd.sh",
         "{{template_dir}}/scripts/networking.sh",
@@ -218,6 +229,9 @@
     "no_proxy": "{{env `no_proxy`}}",
     "preseed_path": "debian-9/preseed.cfg",
     "template": "debian-9.11-amd64",
-    "version": "TIMESTAMP"
+    "version": "TIMESTAMP",
+    "esxi_host": "{{ env `ESXI_HOST` }}",
+    "esxi_username": "{{ env `ESXI_USERNAME` }}",
+    "esxi_password": "{{ env `ESXI_PASSWORD` }}"
   }
 }
