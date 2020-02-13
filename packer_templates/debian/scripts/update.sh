@@ -3,6 +3,19 @@
 arch="`uname -r | sed 's/^.*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}\(-[0-9]\{1,2\}\)-//'`"
 debian_version="`lsb_release -r | awk '{print $2}'`";
 major_version="`echo $debian_version | awk -F. '{print $1}'`";
+version_code="`lsb_release -c -s`"
+
+# Update EOL APT repositories
+if [ "$major_version" -le "7" ]; then
+  cat <<EOF >>/etc/apt/sources.list;
+  deb http://archive.debian.org/debian/ $version_code main
+  deb-src http://archive.debian.org/debian/ $version_code main
+  deb http://archive.debian.org/debian-security $version_code/updates main
+  deb-src http://archive.debian.org/debian-security $version_code/updates main
+EOF
+
+  echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99allow_unauth
+fi
 
 # Disable systemd apt timers/services
 if [ "$major_version" -ge "9" ]; then
