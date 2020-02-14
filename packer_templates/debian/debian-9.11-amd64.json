@@ -190,6 +190,7 @@
         "{{template_dir}}/../_common/fstab.sh",
         "{{template_dir}}/scripts/update.sh",
         "{{template_dir}}/scripts/puppet.sh",
+        "{{template_dir}}/scripts/secgen.sh",
         "{{template_dir}}/../_common/motd.sh",
         "{{template_dir}}/../_common/sshd.sh",
         "{{template_dir}}/scripts/networking.sh",
