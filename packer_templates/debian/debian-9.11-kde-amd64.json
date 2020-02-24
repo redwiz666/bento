@@ -91,6 +91,8 @@
         "ethernet0.pciSlotNumber": "32",
         "ethernet0.networkName": "VM Network"
       },
+      "version": "14",
+      "guest_os_type": "debian9-64",
       "vmx_remove_ethernet_interfaces": true
     },
     {
