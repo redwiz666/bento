@@ -9,6 +9,7 @@ virtualbox-iso|virtualbox-ovf)
     ISO="VBoxGuestAdditions_$VER.iso";
     mkdir -p /tmp/vbox;
     mount -o loop $HOME_DIR/$ISO /tmp/vbox;
+    apt autoremove --purge -y virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-dkms
     sh /tmp/vbox/VBoxLinuxAdditions.run \
         || echo "VBoxLinuxAdditions.run exited $? and is suppressed." \
             "For more read https://www.virtualbox.org/ticket/12479";
