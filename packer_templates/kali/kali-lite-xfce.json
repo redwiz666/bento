@@ -189,10 +189,8 @@
       "scripts": [
         "{{template_dir}}/../_common/fstab.sh",
         "{{template_dir}}/scripts/update.sh",
-        "{{template_dir}}/scripts/msf.sh",
         "{{template_dir}}/scripts/puppet.sh",
         "{{template_dir}}/scripts/secgen.sh",
-        "{{template_dir}}/scripts/metasploit.sh",
         "{{template_dir}}/../_common/motd.sh",
         "{{template_dir}}/../_common/sshd.sh",
         "{{template_dir}}/scripts/networking.sh",
@@ -208,7 +206,7 @@
     }
   ],
   "variables": {
-    "box_basename": "kali-lite-xfce-msf",
+    "box_basename": "kali-lite-xfce",
     "build_directory": "../../builds",
     "http_directory": "{{template_dir}}/http",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
@@ -225,10 +223,10 @@
     "memory": "1024",
     "mirror": "http://cdimage.kali.org",
     "mirror_directory": "kali-2020.1",
-    "name": "kali-lite-xfce-msf",
+    "name": "kali-lite-xfce",
     "no_proxy": "{{env `no_proxy`}}",
     "preseed_path": "kali-lite/preseed.cfg",
-    "template": "kali-lite-xfce-msf",
+    "template": "kali-lite-xfce",
     "version": "TIMESTAMP",
     "esxi_host": "{{ env `ESXI_HOST` }}",
     "esxi_username": "{{ env `ESXI_USERNAME` }}",
